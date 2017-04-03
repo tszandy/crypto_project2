@@ -19,5 +19,15 @@
 
 }
 {
+	kernel(N)=
+		return matker(Mod(N,2))
+
+
+}
+
+
+
+
+{
 	for(i=1,#N,QSfactor(N[i]))
 }
