@@ -10,11 +10,13 @@
 }
 {
 	QSfactor(N)=
-		local(a,b,c);
-		a=L(N)^(sqrt(2));
-		b=B_smooth(N);
-		c=ceil(sqrt(N));
-		print([a,b,c])
+		local(a,b,B);
+		a=ceil(sqrt(N));
+		b=ceil(L(N)^(sqrt(2)));
+		B=ceil(B_smooth(N));	
+
+		print(vector(b,i,i+a))
+
 }
 {
 	for(i=1,#N,QSfactor(N[i]))
