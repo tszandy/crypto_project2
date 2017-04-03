@@ -15,10 +15,22 @@
 	\maketitle
 	
 	\section{Introduction}
-	Put introduction here.
+	The quadratic sieve is an efficient means of finding many numbers greater than the square root of a given $N$ whos squares modulus $N$ are $B-smooth$ for a given positive integer $B$. i.e\\
+	\\
+	Let $N,B\in{Z}\\
+	$ find $a^2 \mod(N)$ s.t. $\forall p_i $ in $a^2 = p^{e_1}_1*p^{e_2}_2*...*p^{e_k}_k$, $p_i \leq B$\\
+	\\
+	\subsection{Difference by Squares Factoring}
+	Why is this useful? Consider the problem of factoring, specifically the method of factoring using difference of squares. If a number $N$ is know to be the difference of two squares, say $X = Y^2 - Z^2$, then $X = (Y+Z) (Y-Z)$. So all we have to do to factor $N$ is to find a number $b$ such that $N + b^2$ is a perfect square. Then $N + b^2 = a^2$, so \[N = a^2 - b^2 = (a+b)(a-b)\] and we have just factored N.\\
+	\\
+	A random value of $b$ is unlikely to produce a perfect square, but it is fairly likely for a multiple $k$ of $N$ to equal the difference of two squares \[kN = a^2 - b^2 = (a+b)(a-b)\] such that $(a+b)$ or $(a-b)$, besides for being a factor of $kN$, is also a non-trivial factor of $N$. This means we only need to find a difference of two squares that equals a mutiple of $N$, which is the equivalent of finding $a$ and $b$ such that $a^2\equiv b^2 \pmod{N}$.
+	\\
+	This fact enables a three step factoring algorithm comprised of:\\
+	\textbf{Step1}:\\
+	\textbf{Step2}: \\
+	\textbf{Step3}: \\
 	
-	\section{Motivation via Difference of Squares Factoring}
-	Why we care about QSieve. It's the most important step of dif sqaures factoring, etc.
+	Quadratic sieve solves the first step of this algorithm.
 
 	\section{Overview of Quadratic Sieve}
 	Explain how quadratic sieve works TODO more info +equations + fix "=" to congruent
