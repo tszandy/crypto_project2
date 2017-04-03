@@ -32,15 +32,14 @@
 				roots=getRoots(N,P[i]);
 				for(j=1,#roots,
 					for(n=1,P[i],
-						if(Mod(n+a,P[i]) == Mod(N,P[i]),
+						if(Mod(n+a-1,P[i]) == Mod(roots[j],P[i]),
 							sieveStart=n;
 							break
 						)
 					);
 					forstep(k=sieveStart,#num,P[i],
-
 						num[k]=num[k]/P[i]
-					)
+					);
 				)
 			)
 		);
