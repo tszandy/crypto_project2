@@ -50,7 +50,7 @@
 					if(P[i]^pow > B, break);
 					roots=getRoots(N,P[i]^pow);
 					for(j=1,#roots,
-                        
+
                         \\ Determine where to start dividing from
 						for(n=1,P[i]^pow,
 							if(Mod(n+a-1,P[i]^pow) == Mod(roots[j],P[i]^pow),
@@ -58,7 +58,7 @@
 								break
 							)
 						);
-                        
+
                         \\ Divide all multiples of p^pow in the list
 						forstep(k=sieveStart,#numberList,P[i]^pow,
 							numberList[k]=numberList[k]/P[i];
@@ -71,7 +71,7 @@
 				)
 			)
 		);
-        
+
         \\ init M with B rows and col for each sieved to 1 num
         M=matrix(#P,#reducedNums);
 
