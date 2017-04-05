@@ -17,6 +17,11 @@
 		return(sols);
 }
 {
+	validate(factors,N)=
+		if(factors[1]*factors[2]==N, return(True));
+		return(False);
+}
+{
 	QSfactor(N,b,B)=
 		local(
             roots, \\ solutions to t^2 = N (mod p)
@@ -102,8 +107,8 @@
             if(g != 1 && g != N, break);
         );
 
-        \\ returns a tuple of both prime divisors
-        return([g, N/g]);
+        \\ returns a list of the prime divisors plus a boolean for if the factors are valid
+        return([g, N/g, validate([g,N/g], N)]);
 }
 {
 	\\for(i=1,#N,QSfactor(N[i]))
