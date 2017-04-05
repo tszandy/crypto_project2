@@ -61,6 +61,7 @@
 		As seen in the code, we use a guard for testing if a number is a quadratic residue modulo some prime in the list $p$, and if not then we don't consider that prime in the sieve. Moreover, we use the square roots modulo $p$ to determine where to start the divisions for the sieve in the \verb|forstep| loop. Once we have the sieved list, we find the matrix kernel to form the squares as mentioned in section 2, and return the factorization of $N$.
 	
 		\subsection{Interesting Details/Pitfalls}
+		We struggled with determining appropriate values for $b$, the size of the list of numbers, and $B$, the bound on the size of primes to use in the sieve. We found that these values can be quite different depending on the number being factored.
 	
 		\subsection{Testing}
 		In order to ensure that the algorithm works as desired, we added a simple check to make sure the factorization is correct:
