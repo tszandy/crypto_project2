@@ -48,15 +48,31 @@
 		\noindent\textbf{Step 5}: Whenever the quotient of a list element is 1,  it's prime factors are clearly only primes <= B and is thus B-smooth\\ 
 	  
 	\section{Implementation}
-	We used GP, TODO more info
+	We used gp-pari for our implementation, mainly due to its power and useful built-in mathematical functions. The source code is in section 5 of this document.
 	
 		\subsection{Initial Approach}
+		Initially, we wanted to get our code to work for a small example such as the one in the book, and then expand it to see how it worked for the larger examples. We also were not considering efficiency at this time, and wanted the algorithm to work before we tried any optimization. Naively, this approach involved iterating through every number in the list and checking divisibility by all primes in our list of primes then dividing each number as much as possible.
+		
+		This approach works, but not efficiently. In fact, we need not consider primes $p$ where the congruence $a^2 \equiv N \Mod{p}$ has no solutions. Also, once we know that some number $a$ is divisible by $p$, we can also divide multiples of $p$ from that number $a$ in the list and skip over ones we know will not be divisible by $p$. This leads to our more efficient and final implementation.
 	
 		\subsection{Final Implementation}
+		For our final implementation, we used the aforementioned techniques to improve the efficiency of the sieve by only considering numbers and primes that we know have a chance of being divisible by said prime.
+		
+		As seen in the code, we use a guard for testing if a number is a quadratic residue modulo some prime in the list $p$, and if not then we don't consider that prime in the sieve. Moreover, we use the square roots modulo $p$ to determine where to start the divisions for the sieve in the \verb|forstep| loop. Once we have the sieved list, we find the matrix kernel to form the squares as mentioned in section 2, and return the factorization of $N$.
 	
-		\subsection{Interesting Details/etc?}
+		\subsection{Interesting Details/Pitfalls}
 	
 		\subsection{Testing}
+		In order to ensure that the algorithm works as desired, we added a simple check to make sure the factorization is correct:
+\begin{lstlisting}
+{
+	validate(factors,N)=
+		if(factors[1]*factors[2]==N, return(True));
+		return(False);
+}
+\end{lstlisting}
+	
+	This verifies that the factorization found by the algorithm is indeed the correct factorization. The string ``True'' or ``False'' is present in the return value of the \verb|QSfactor| function.
 	
 	\section{Efficiency}
 	
