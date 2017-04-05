@@ -10,7 +10,14 @@
 }
 {
 	getRoots(N,p)=
-		local(sols=[]);
+		local(sols=[], roots);
+		if(isprime(p),
+			roots=polrootsmod(x^2-N,p);
+			for(i=1, #roots, 
+				sols = concat(sols, lift(roots[i]))
+			);
+			return(sols);
+		);
 		for(i=1,p,
 			if(Mod(i^2,p) == Mod(N,p),sols=concat(sols,i))
 		);
