@@ -1,3 +1,0 @@
--- What to do about overflow for little b number
-
--- How should we go about factoring into small primes when we have matrix kernel
